@@ -1,0 +1,16 @@
+{
+  "generator-ui5-project": {
+    "namespaceUI5": "ns.zprueb2",
+    "projectName": "zprueb2",
+    "uimoduleName": "zprueb2",
+    "enableFPM": false,
+    "platform": "Static webserver",
+    "ui5Libs": "Local resources (OpenUI5)",
+    "newDir": true,
+    "initRepo": false,
+    "projectId": "ns.zprueb2.zprueb2",
+    "uimodules": [
+      "zprueb2"
+    ]
+  }
+}

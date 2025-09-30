@@ -1,8 +1,7 @@
 # Dependencias de Node.js
 node_modules/
 
-# Archivos de build (la carpeta que se genera para producción)
-dist/
+
 
 # Archivos de MTA (Multi-Target Application)
 mta_archives/

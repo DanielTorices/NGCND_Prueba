@@ -26,7 +26,7 @@ sap.ui.define([
             // 🔵 Mostrar busy en la vista
             this.getView().setBusy(true);
 
-            fetch("https://mi-api-sap-negociando.azurewebsites.net/api/sapdata")
+            fetch("https://api-ngcnd.azurewebsites.net/api/sapdata")
                 .then(response => response.json())
                 .then(data => console.log(data))
                 .catch(error => {

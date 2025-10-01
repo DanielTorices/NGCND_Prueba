@@ -20,7 +20,7 @@ sap.ui.define([
         },
 
         _loadDataFromAPI: function () {
-            const sUrl = "http://localhost:3000/api/sapdata";
+            const sUrl = "http://api-ngcnd.azurewebsites.net/api/sapdata";
             const oLocalModel = this.getView().getModel("localModel");
 
             // 🔵 Mostrar busy en la vista

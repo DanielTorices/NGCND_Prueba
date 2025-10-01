@@ -53,7 +53,7 @@
             },
             "sapData": {
                 "type": "sap.ui.model.json.JSONModel",
-                "uri": "http://localhost:3000/api/sapdata"
+                "uri": "https://api-ngcnd.azurewebsites.net/api/sapdata"
             }
         },
         "resources": {

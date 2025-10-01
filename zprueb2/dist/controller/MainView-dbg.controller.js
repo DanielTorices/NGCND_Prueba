@@ -12,7 +12,7 @@ sap.ui.define([
                 items: []
             });
 
-            oLocalModel.setSizeLimit(1500000); 
+            oLocalModel.setSizeLimit(1500000);
 
             this.getView().setModel(oLocalModel, "localModel");
 
@@ -20,23 +20,15 @@ sap.ui.define([
         },
 
         _loadDataFromAPI: function () {
-            const sUrl = "http://api-ngcnd.azurewebsites.net/api/sapdata";
+            const sUrl = "https://api-ngcnd.azurewebsites.net/api/sapdata";
             const oLocalModel = this.getView().getModel("localModel");
 
             // 🔵 Mostrar busy en la vista
             this.getView().setBusy(true);
 
-            fetch(sUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Error al obtener datos: " + response.statusText);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    this._processData(data);
-                    oLocalModel.setProperty("/items", data);
-                })
+            fetch("https://mi-api-sap-negociando.azurewebsites.net/api/sapdata")
+                .then(response => response.json())
+                .then(data => console.log(data))
                 .catch(error => {
                     Log.error("Fallo la carga de datos del API", error);
                 })

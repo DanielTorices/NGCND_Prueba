@@ -27,8 +27,7 @@
 
                 <items>
                     <ColumnListItem vAlign="Middle">
-                    <!--
-                    
+                   <!--
                         <cells>
                             <Text text="{localModel>No_documento}"/>
                             <Text text="{localModel>Buyer}"/>
@@ -38,7 +37,8 @@
                             <Text text="{localModel>Currency}"/>
                             <Text text="{localModel>Iva}"/>
                         </cells>
-                        
+                         
+                    
                         <cells>
                             <Text text="{localModel>MANDT}"/>
                             <Text text="{localModel>EBELN}"/>
@@ -46,7 +46,7 @@
                             <Text text="{localModel>BSTYP}"/>
                             <Text text="{localModel>BSART}"/>
                         </cells>
-                        -->
+                          -->
                         <cells>
                             <Text text="{localModel>TABNAME}"/>
                             <Text text="{localModel>DDLANGUAGE}"/>
@@ -54,7 +54,7 @@
                             <Text text="{localModel>AS4VERS}"/>
                             <Text text="{localModel>DDTEXT}"/>
                         </cells>
-
+                      
                     </ColumnListItem>
                 </items>
             </Table>

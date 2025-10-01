@@ -28,7 +28,11 @@ sap.ui.define([
 
             fetch("https://api-ngcnd.azurewebsites.net/api/sapdata")
                 .then(response => response.json())
-                .then(data => console.log(data))
+                .then(data =>{ console.log(data)
+
+                    this._processData(data);
+                    oLocalModel.setProperty("/items", data);
+                } )
                 .catch(error => {
                     Log.error("Fallo la carga de datos del API", error);
                 })

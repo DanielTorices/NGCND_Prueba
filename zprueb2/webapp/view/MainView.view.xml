@@ -1,60 +1,57 @@
-<mvc:View controllerName="zprueb2.controller.MainView"
+<mvc:View
+    controllerName="zprueb2.controller.MainView"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
 
-    <Page id="page" title="Reporte de Proveedores">
+    <Page id="page" title="Visor de Tablas de Diccionario">
         <content>
             <Table
                 id="reporteTable"
-                headerText="Datos Cargados"
                 class="sapUiResponsiveMargin"
                 width="auto"
                 items="{localModel>/items}"
-                growing="true"                  
-                growingThreshold="100"          
-                growingScrollToLoad="true">   
+                growing="true"
+                growingThreshold="20"
+                growingScrollToLoad="true"
+                alternateRowColors="true">
+
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="Tablas del Diccionario de Datos" level="H2"/>
+                        <ToolbarSpacer/>
+                        <SearchField
+                            id="searchField"
+                            width="auto"
+                            placeholder="Buscar por tabla, descripción..."
+                            search=".onSearch"/>
+                    </OverflowToolbar>
+                </headerToolbar>
 
                 <columns>
-                    <Column><Label text="No_documento"/></Column>
-                    <Column><Label text="Comprador"/></Column>
-                    <Column><Label text="Fecha de Creación"/></Column>
-                    <Column><Label text="Proveedor"/></Column>
-                    <Column hAlign="End"><Label text="SubTotal"/></Column>
-                    <Column><Label text="Moneda"/></Column>
-                    <Column><Label text="IVA"/></Column>
+                    <Column><Text text="Nombre de Tabla"/></Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true"><Text text="Descripción"/></Column>
+                    <Column hAlign="Center"><Text text="Estado"/></Column>
+                    <Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true"><Text text="Idioma"/></Column>
+                    <Column hAlign="End" minScreenWidth="Desktop" demandPopin="true"><Text text="Versión"/></Column>
                 </columns>
 
                 <items>
-                    <ColumnListItem vAlign="Middle">
-                   <!--
+                    <ColumnListItem vAlign="Middle" type="Navigation">
                         <cells>
-                            <Text text="{localModel>No_documento}"/>
-                            <Text text="{localModel>Buyer}"/>
-                            <Text text="{localModel>CreationDate}"/>
-                            <Text text="{localModel>Supplier}"/>
-                            <Text text="{localModel>Subtotal}"/>
-                            <Text text="{localModel>Currency}"/>
-                            <Text text="{localModel>Iva}"/>
-                        </cells>
-                         
-                    
-                        <cells>
-                            <Text text="{localModel>MANDT}"/>
-                            <Text text="{localModel>EBELN}"/>
-                            <Text text="{localModel>BUKRS}"/>
-                            <Text text="{localModel>BSTYP}"/>
-                            <Text text="{localModel>BSART}"/>
-                        </cells>
-                          -->
-                        <cells>
-                            <Text text="{localModel>TABNAME}"/>
-                            <Text text="{localModel>DDLANGUAGE}"/>
-                            <Text text="{localModel>AS4LOCAL}"/>
-                            <Text text="{localModel>AS4VERS}"/>
+                            <ObjectIdentifier title="{localModel>TABNAME}"/>
+                            
                             <Text text="{localModel>DDTEXT}"/>
+                            
+                            <ObjectStatus
+                                text="{localModel>AS4LOCAL}"
+                                state="{= ${localModel>AS4LOCAL} === 'A' ? 'Success' : 'None' }"/>
+                            
+                            <Text text="{localModel>DDLANGUAGE}"/>
+                            
+                            <ObjectNumber number="{localModel>AS4VERS}"/>
                         </cells>
-                      
                     </ColumnListItem>
                 </items>
             </Table>

@@ -28,11 +28,12 @@ sap.ui.define([
 
             fetch("https://api-ngcnd.azurewebsites.net/api/sapdata")
                 .then(response => response.json())
-                .then(data =>{ console.log(data)
+                .then(data => {
+                    console.log(data)
 
                     this._processData(data);
                     oLocalModel.setProperty("/items", data);
-                } )
+                })
                 .catch(error => {
                     Log.error("Fallo la carga de datos del API", error);
                 })
@@ -65,6 +66,26 @@ sap.ui.define([
                 "VS2": 1.40
             };
             return percentages[type] || 1;
+        },
+        onSearch: function (oEvent) {
+            const sQuery = oEvent.getParameter("query");
+            const oTable = this.getView().byId("reporteTable");
+            const oBinding = oTable.getBinding("items");
+
+            if (sQuery) {
+                const oFinalFilter = new sap.ui.model.Filter({
+                    filters: [
+                        // Busca en el nombre de la tabla
+                        new sap.ui.model.Filter("TABNAME", sap.ui.model.FilterOperator.Contains, sQuery),
+                        // Y también en la descripción
+                        new sap.ui.model.Filter("DDTEXT", sap.ui.model.FilterOperator.Contains, sQuery)
+                    ],
+                    and: false // El resultado aparecerá si CUALQUIERA de los dos filtros coincide
+                });
+                oBinding.filter(oFinalFilter);
+            } else {
+                oBinding.filter([]); // Limpia el filtro si la búsqueda está vacía
+            }
         }
     });
 });
